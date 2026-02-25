@@ -44,7 +44,8 @@ Monster
 
 인스턴스 메서드를 가진 `Calculator` 클래스를 작성하세요.
 
-- `Calculator` 클래스에 `Add(int x, int y)`와 `Multiply(int x, int y)` 메서드를 정의
+- `Calculator` 클래스에 `Add(int x, int y)`와 
+- `Multiply(int x, int y)` 메서드를 정의
 - 개체를 생성하고 `Add(3, 5)`와 `Multiply(4, 6)`을 호출
 
 **실행 결과**
@@ -144,7 +145,7 @@ Item
 
 ---
 
-## 과제 9: ToString() 활용
+
 
 `Player` 클래스에 `ToString()`을 오버라이드하여 두 명의 플레이어 정보를 출력하세요.
 
@@ -165,7 +166,8 @@ Item
 
 `Enemy` 클래스 배열을 사용하여 여러 적을 관리하는 코드를 작성하세요.
 
-- `Enemy` 클래스에 `Name`(string), `Health`(int) 필드와 `ShowInfo()` 메서드를 정의
+- `Enemy` 클래스에 `Name`(string), `Health`(int) 필드와
+- `ShowInfo()` 메서드를 정의
 - 크기 3의 `Enemy` 배열을 선언하고 각 요소에 개체를 생성
 - `for` 문으로 배열을 순회하며 정보를 출력
 
@@ -202,7 +204,8 @@ Item
 
 개체 이니셜라이저를 사용하여 `Character` 클래스의 개체를 생성하세요.
 
-- `Character` 클래스에 `Name`(string), `Level`(int), `Job`(string) 필드를 정의
+- `Character` 클래스에 `Name`(string), `Level`(int), 
+- `Job`(string) 필드를 정의
 - 기존 방식과 개체 이니셜라이저 방식 각각으로 개체를 생성
 - 두 개체의 정보를 출력
 
