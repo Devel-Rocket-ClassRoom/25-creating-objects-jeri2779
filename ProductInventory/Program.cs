@@ -2,33 +2,45 @@ using System;
 
 // README.md를 읽고 아래에 코드를 작성하세요.
 Console.WriteLine("=== 상품 목록 ===");
-Product[] product = new Product[4];
-product[0] = new Product();
-product[0].Stock = 15; 
-product[0].Name = "노트북";
-product[0].Price = 1500000;
 
-product[1] = new Product();
-product[1].Stock = 20;
-product[1].Name = "마우스";
-product[1].Price = 35000;
-
-product[2] = new Product();
-product[2].Stock = 15;
-product[2].Name = "키보드";
-product[2].Price = 89000;
-
-//Product stock = new Product
-//{
-//    Name = "노트북",
-//    Price = 1500000,
-//    Stock = 5
-//};
-
-for (int i = 0; i < product.Length-1; i++)
+Product[] product = new Product[]
 {
-    product[i].ShowInfo();
+    new Product { Name = "노트북", Price = 1500000, Stock = 5 },
+    new Product { Name = "마우스", Price = 35000, Stock = 20 },
+    new Product { Name = "키보드", Price = 89000, Stock = 15 }
+};
+
+ 
+foreach (Product item in product)
+{
+    Console.WriteLine(item);
 }
+Console.WriteLine("=== 거래 ===");
+product[0].Sell(2);
+product[1].Sell(5);
+product[2].Sell(20);  
+product[2].AddStock(10);
+Console.WriteLine();
+Console.WriteLine("=== 최종 상품 목록 ===");
+foreach (Product item in product)
+{
+    Console.WriteLine(item.ToString());
+}
+
+
+Console.WriteLine("=== 총 재고 가치 ===");
+int totalSum = 0;
+foreach (Product item in product)
+{
+    int value = item.GetTotalValue();
+    Console.WriteLine($"{item.Name}: {value}원");
+    totalSum += value;
+}
+Console.WriteLine("---");
+Console.WriteLine($"전체 재고 총 가치: {totalSum}원");
+
+
+
 
 class Product
 {
@@ -38,19 +50,24 @@ class Product
 
     public void AddStock(int quantity)
     {
-        Name = quantity.ToString();
-        Price = quantity;
-        Stock++;
+        Stock += quantity;
+        Console.WriteLine($"{Name} {quantity}개 재고 추가. 현재 재고: {Stock}개");
 
     }
     public void Sell(int quantity)
     {
-
+        if (Stock < quantity)
+        {
+            Console.WriteLine($"{Name} {quantity}개 판매 실패. 재고가 부족합니다. (현재 재고: {Stock}개)");
+            return;
+        }
+        Stock -= quantity;
+        Console.WriteLine($"{Name} {quantity}개 판매 완료. 남은 재고: {Stock}개");
     }
 
-    public void GetTotalValue()
+    public int GetTotalValue()
     {
-        Price = 0;
+        return Price * Stock;
     }
 
     public override string ToString()
@@ -58,9 +75,6 @@ class Product
         return $"[{Name}] {Price}원 (재고: {Stock}개)";
     }
 
-    public void ShowInfo()//테스트용
-    {
-        Console.WriteLine($"[{Name}] {Price}원 (재고: {Stock}개)");
-    }
+    
 
 }
